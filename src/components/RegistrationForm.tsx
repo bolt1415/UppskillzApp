@@ -68,7 +68,7 @@ export default function RegistrationForm() {
     const userData: User = {
       email: formData.email,
       fullName: formData.fullName,
-      sex: formData.sex as "male" | "female" | "other",
+      sex: formData.sex as "male" | "female",
       age: age,
       answers: {},
     };
