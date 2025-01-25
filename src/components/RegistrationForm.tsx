@@ -25,7 +25,7 @@ export default function RegistrationForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.email.includes("@")) {
       toast({
@@ -49,7 +49,7 @@ export default function RegistrationForm() {
     if (isNaN(age) || age < 13 || age > 100) {
       toast({
         title: "Invalid age",
-        description: "Age must be between 13 and 100",
+        description: "Age must be a number between 13 and 100",
         variant: "destructive",
       });
       return;
@@ -68,12 +68,13 @@ export default function RegistrationForm() {
     const userData: User = {
       email: formData.email,
       fullName: formData.fullName,
-      sex: formData.sex as "male" | "female",
+      sex: formData.sex as "male" | "female", // Only "male" or "female"
       age: age,
       answers: {},
     };
 
     localStorage.setItem("currentUser", JSON.stringify(userData));
+    setFormData({ email: "", fullName: "", sex: "", age: "" }); // Reset form
     navigate("/quiz");
   };
 
@@ -81,7 +82,7 @@ export default function RegistrationForm() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8 animate-slideIn">
         <h1 className="text-2xl font-bold text-center mb-6">Personality Quiz Registration</h1>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="email">Email address</Label>
@@ -92,6 +93,7 @@ export default function RegistrationForm() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
+              aria-describedby="email-error"
             />
           </div>
 
@@ -103,6 +105,7 @@ export default function RegistrationForm() {
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               required
+              aria-describedby="name-error"
             />
           </div>
 
@@ -133,6 +136,7 @@ export default function RegistrationForm() {
               value={formData.age}
               onChange={(e) => setFormData({ ...formData, age: e.target.value })}
               required
+              aria-describedby="age-error"
             />
           </div>
 
