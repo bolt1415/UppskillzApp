@@ -28,7 +28,14 @@ export default function AdminDashboard() {
       setIsAuthenticated(true);
       try {
         const sheetsData = await fetchFromGoogleSheets();
-        setUsers(sheetsData);
+        // Ensure the data is in the correct format
+        const formattedData = sheetsData.map((user: any) => ({
+          ...user,
+          answers: typeof user.answers === 'string' 
+            ? JSON.parse(user.answers) 
+            : user.answers
+        }));
+        setUsers(formattedData);
         toast({
           title: "Success",
           description: "Admin access granted",
@@ -48,6 +55,11 @@ export default function AdminDashboard() {
       });
     }
     setPassword("");
+  };
+
+  const getQuestionText = (questionId: string) => {
+    const id = parseInt(questionId);
+    return QUIZ_QUESTIONS[id]?.text || "Question not found";
   };
 
   return (
@@ -116,14 +128,14 @@ export default function AdminDashboard() {
                     </Button>
                   </div>
                   
-                  {expandedUser === index && (
+                  {expandedUser === index && user.answers && (
                     <div className="mt-4 border-t pt-4">
                       <h3 className="font-semibold mb-2">Detailed Answers:</h3>
                       <div className="grid gap-2">
                         {Object.entries(user.answers).map(([questionId, answer]) => (
                           <div key={questionId} className="text-sm">
                             <div className="font-medium">
-                              Q{parseInt(questionId) + 1}: {QUIZ_QUESTIONS[parseInt(questionId)].text}
+                              Q{parseInt(questionId) + 1}: {getQuestionText(questionId)}
                             </div>
                             <div className="ml-4 text-gray-600">
                               Answer: {answer}
