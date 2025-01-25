@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import type { User } from "@/types/quiz";
+import { saveToGoogleSheets } from "@/utils/googleSheets"; // Import the save function
 
 export default function RegistrationForm() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function RegistrationForm() {
     age: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Basic validation
@@ -68,14 +69,26 @@ export default function RegistrationForm() {
     const userData: User = {
       email: formData.email,
       fullName: formData.fullName,
-      sex: formData.sex as "male" | "female", // Only "male" or "female"
+      sex: formData.sex as "male" | "female",
       age: age,
       answers: {},
     };
 
-    localStorage.setItem("currentUser", JSON.stringify(userData));
-    setFormData({ email: "", fullName: "", sex: "", age: "" }); // Reset form
-    navigate("/quiz");
+    console.log('User Data to Save:', userData);
+
+    try {
+      await saveToGoogleSheets(userData); // Save to Google Sheets
+      localStorage.setItem("currentUser", JSON.stringify(userData));
+      setFormData({ email: "", fullName: "", sex: "", age: "" }); // Reset form
+      navigate("/quiz");
+    } catch (error) {
+      console.error('Error saving to Google Sheets:', error);
+      toast({
+        title: "Error",
+        description: "Failed to save data. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
