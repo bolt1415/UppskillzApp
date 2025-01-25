@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/components/ui/use-toast";
-import { QUIZ_QUESTIONS, calculatePersonalityType } from "@/types/quiz";
+import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
+import { calculatePersonalityType } from "@/types/quizTypes";
 import { saveToGoogleSheets } from "@/utils/googleSheets";
-import type { User } from "@/types/quiz";
+import type { User } from "@/types/quizTypes";
 
 export default function Quiz() {
   const navigate = useNavigate();
