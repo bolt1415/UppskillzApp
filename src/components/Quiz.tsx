@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/components/ui/use-toast";
-import { QUIZ_QUESTIONS } from "@/types/quiz";
+import { QUIZ_QUESTIONS, calculatePersonalityType } from "@/types/quiz";
 import type { User } from "@/types/quiz";
 
 export default function Quiz() {
@@ -33,13 +33,17 @@ export default function Quiz() {
       },
     };
 
-    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-    setUserData(updatedUser);
-
     if (currentQuestion === QUIZ_QUESTIONS.length - 1) {
+      // Calculate personality type
+      const personalityType = calculatePersonalityType(updatedUser.answers);
+      const finalUser = {
+        ...updatedUser,
+        personalityType,
+      };
+
       // Save to users list
       const users = JSON.parse(localStorage.getItem("users") || "[]");
-      localStorage.setItem("users", JSON.stringify([...users, updatedUser]));
+      localStorage.setItem("users", JSON.stringify([...users, finalUser]));
       
       // Clear current user
       localStorage.removeItem("currentUser");
@@ -47,6 +51,8 @@ export default function Quiz() {
       // Navigate to thank you page
       navigate("/thank-you");
     } else {
+      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+      setUserData(updatedUser);
       setCurrentQuestion(currentQuestion + 1);
     }
   };
