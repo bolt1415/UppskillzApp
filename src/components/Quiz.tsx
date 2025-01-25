@@ -14,6 +14,7 @@ export default function Quiz() {
   const { toast } = useToast();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userData, setUserData] = useState<User | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
@@ -36,14 +37,17 @@ export default function Quiz() {
     };
 
     if (currentQuestion === QUIZ_QUESTIONS.length - 1) {
-      // Calculate personality type
-      const personalityType = calculatePersonalityType(updatedUser.answers, QUIZ_QUESTIONS);
-      const finalUser = {
-        ...updatedUser,
-        personalityType,
-      };
-
+      setIsSaving(true);
       try {
+        // Calculate personality type
+        const personalityType = calculatePersonalityType(updatedUser.answers, QUIZ_QUESTIONS);
+        const finalUser = {
+          ...updatedUser,
+          personalityType,
+        };
+
+        console.log('Saving final user data:', finalUser);
+        
         // Save to Google Sheets
         await saveToGoogleSheets(finalUser);
         
@@ -57,11 +61,14 @@ export default function Quiz() {
         // Navigate to thank you page
         navigate("/thank-you");
       } catch (error) {
+        console.error('Failed to save quiz results:', error);
         toast({
-          title: "Error",
-          description: "Failed to save quiz results. Please try again.",
+          title: "Error Saving Results",
+          description: "There was a problem saving your quiz results. Please try again.",
           variant: "destructive",
         });
+      } finally {
+        setIsSaving(false);
       }
     } else {
       localStorage.setItem("currentUser", JSON.stringify(updatedUser));
@@ -97,6 +104,7 @@ export default function Quiz() {
               variant="outline"
               className="p-6 text-left justify-start hover:bg-primary hover:text-white transition-colors"
               onClick={() => handleAnswer(option)}
+              disabled={isSaving}
             >
               {option}
             </Button>

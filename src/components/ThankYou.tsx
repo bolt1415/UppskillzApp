@@ -9,7 +9,7 @@ export default function ThankYou() {
       <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center animate-slideIn">
         <h1 className="text-3xl font-bold mb-4">Thank You!</h1>
         <p className="text-gray-600 mb-8">
-          We appreciate your participation in our personality quiz. Your responses have been recorded successfully.
+          Your quiz responses have been successfully recorded. Thank you for participating in our personality assessment!
         </p>
         <Button onClick={() => navigate("/")} className="w-full">
           Take Quiz Again
