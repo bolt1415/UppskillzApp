@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/components/ui/use-toast";
 import { QUIZ_QUESTIONS, calculatePersonalityType } from "@/types/quiz";
+import { saveToGoogleSheets } from "@/utils/googleSheets";
 import type { User } from "@/types/quiz";
 
 export default function Quiz() {
@@ -22,7 +23,7 @@ export default function Quiz() {
     setUserData(JSON.parse(storedUser));
   }, [navigate]);
 
-  const handleAnswer = (answer: string) => {
+  const handleAnswer = async (answer: string) => {
     if (!userData) return;
 
     const updatedUser = {
@@ -41,15 +42,26 @@ export default function Quiz() {
         personalityType,
       };
 
-      // Save to users list
-      const users = JSON.parse(localStorage.getItem("users") || "[]");
-      localStorage.setItem("users", JSON.stringify([...users, finalUser]));
-      
-      // Clear current user
-      localStorage.removeItem("currentUser");
-      
-      // Navigate to thank you page
-      navigate("/thank-you");
+      try {
+        // Save to Google Sheets
+        await saveToGoogleSheets(finalUser);
+        
+        // Save to local storage for backup
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        localStorage.setItem("users", JSON.stringify([...users, finalUser]));
+        
+        // Clear current user
+        localStorage.removeItem("currentUser");
+        
+        // Navigate to thank you page
+        navigate("/thank-you");
+      } catch (error) {
+        toast({
+          title: "Error",
+          description: "Failed to save quiz results. Please try again.",
+          variant: "destructive",
+        });
+      }
     } else {
       localStorage.setItem("currentUser", JSON.stringify(updatedUser));
       setUserData(updatedUser);

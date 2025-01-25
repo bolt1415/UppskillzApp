@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, ChevronDown, ChevronUp } from "lucide-react";
 import {
   Dialog,
@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { QUIZ_QUESTIONS } from "@/types/quiz";
+import { fetchFromGoogleSheets } from "@/utils/googleSheets";
 import type { User } from "@/types/quiz";
 
 const ADMIN_PASSWORD = "admin123"; // In a real app, this would be securely stored
@@ -19,15 +20,26 @@ export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
   const [expandedUser, setExpandedUser] = useState<number | null>(null);
+  const [users, setUsers] = useState<User[]>([]);
   const { toast } = useToast();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
-      toast({
-        title: "Success",
-        description: "Admin access granted",
-      });
+      try {
+        const sheetsData = await fetchFromGoogleSheets();
+        setUsers(sheetsData);
+        toast({
+          title: "Success",
+          description: "Admin access granted",
+        });
+      } catch (error) {
+        toast({
+          title: "Error",
+          description: "Failed to fetch data",
+          variant: "destructive",
+        });
+      }
     } else {
       toast({
         title: "Error",
@@ -37,8 +49,6 @@ export default function AdminDashboard() {
     }
     setPassword("");
   };
-
-  const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");
 
   return (
     <Dialog>
