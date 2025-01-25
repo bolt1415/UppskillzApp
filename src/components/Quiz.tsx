@@ -35,7 +35,7 @@ export default function Quiz() {
 
     if (currentQuestion === QUIZ_QUESTIONS.length - 1) {
       // Calculate personality type
-      const personalityType = calculatePersonalityType(updatedUser.answers);
+      const personalityType = calculatePersonalityType(updatedUser.answers, QUIZ_QUESTIONS);
       const finalUser = {
         ...updatedUser,
         personalityType,
