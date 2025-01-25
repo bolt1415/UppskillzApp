@@ -122,6 +122,7 @@ export const QUIZ_QUESTIONS: Question[] = [
     options: ["Very outgoing", "Sociable", "Reserved", "Private"],
     category: "E/I"
   },
+  
   // N/S Questions (11-20)
   {
     id: 11,
@@ -129,13 +130,61 @@ export const QUIZ_QUESTIONS: Question[] = [
     options: ["Possibilities", "Future potential", "Past experience", "Concrete facts"],
     category: "N/S"
   },
-  // ... Add remaining N/S questions here
+  {
+    id: 12,
+    text: "You prefer information that is:",
+    options: ["Theoretical", "Abstract", "Practical", "Factual"],
+    category: "N/S"
+  },
+  {
+    id: 13,
+    text: "You are more interested in:",
+    options: ["What could be", "Innovation", "What is", "Reality"],
+    category: "N/S"
+  },
+  {
+    id: 14,
+    text: "You value more:",
+    options: ["Imagination", "Innovation", "Experience", "Tradition"],
+    category: "N/S"
+  },
+  {
+    id: 15,
+    text: "You tend to focus on:",
+    options: ["Patterns", "Connections", "Details", "Facts"],
+    category: "N/S"
+  },
+  {
+    id: 16,
+    text: "You prefer learning about:",
+    options: ["Concepts", "Theories", "Applications", "Practice"],
+    category: "N/S"
+  },
+  {
+    id: 17,
+    text: "You are more drawn to:",
+    options: ["Metaphors", "Symbolism", "Literal meanings", "Clear descriptions"],
+    category: "N/S"
+  },
+  {
+    id: 18,
+    text: "You prefer projects that are:",
+    options: ["Open-ended", "Experimental", "Well-defined", "Structured"],
+    category: "N/S"
+  },
+  {
+    id: 19,
+    text: "You are more comfortable with:",
+    options: ["Abstract ideas", "Theories", "Concrete examples", "Real cases"],
+    category: "N/S"
+  },
   {
     id: 20,
     text: "You prefer books/movies that are:",
     options: ["Abstract", "Imaginative", "Realistic", "Practical"],
     category: "N/S"
   },
+  
   // T/F Questions (21-30)
   {
     id: 21,
@@ -143,13 +192,61 @@ export const QUIZ_QUESTIONS: Question[] = [
     options: ["Logic", "Objective facts", "Personal values", "Harmony"],
     category: "T/F"
   },
-  // ... Add remaining T/F questions here
+  {
+    id: 22,
+    text: "You tend to be more:",
+    options: ["Analytical", "Objective", "Empathetic", "Compassionate"],
+    category: "T/F"
+  },
+  {
+    id: 23,
+    text: "You value more:",
+    options: ["Truth", "Accuracy", "Harmony", "Feelings"],
+    category: "T/F"
+  },
+  {
+    id: 24,
+    text: "In disagreements, you focus on:",
+    options: ["Facts", "Logic", "Impact on others", "Maintaining peace"],
+    category: "T/F"
+  },
+  {
+    id: 25,
+    text: "You prefer feedback that is:",
+    options: ["Direct", "Honest", "Gentle", "Constructive"],
+    category: "T/F"
+  },
+  {
+    id: 26,
+    text: "You are more likely to trust:",
+    options: ["Logic", "Analysis", "Intuition", "Feelings"],
+    category: "T/F"
+  },
+  {
+    id: 27,
+    text: "You prefer to make decisions based on:",
+    options: ["Data", "Facts", "Values", "Impact on people"],
+    category: "T/F"
+  },
+  {
+    id: 28,
+    text: "You are more concerned with:",
+    options: ["Efficiency", "Results", "Harmony", "People's feelings"],
+    category: "T/F"
+  },
+  {
+    id: 29,
+    text: "You value more in others:",
+    options: ["Competence", "Achievement", "Kindness", "Cooperation"],
+    category: "T/F"
+  },
   {
     id: 30,
     text: "In conflicts, you tend to:",
     options: ["Analyze facts", "Seek truth", "Consider feelings", "Maintain peace"],
     category: "T/F"
   },
+  
   // J/P Questions (31-40)
   {
     id: 31,
@@ -157,7 +254,54 @@ export const QUIZ_QUESTIONS: Question[] = [
     options: ["Structured", "Organized", "Flexible", "Adaptable"],
     category: "J/P"
   },
-  // ... Add remaining J/P questions here
+  {
+    id: 32,
+    text: "You prefer to:",
+    options: ["Plan ahead", "Make schedules", "Go with the flow", "Be spontaneous"],
+    category: "J/P"
+  },
+  {
+    id: 33,
+    text: "You feel better when things are:",
+    options: ["Decided", "Settled", "Open-ended", "Flexible"],
+    category: "J/P"
+  },
+  {
+    id: 34,
+    text: "You prefer to:",
+    options: ["Complete one task", "Follow plans", "Multi-task", "Adapt as needed"],
+    category: "J/P"
+  },
+  {
+    id: 35,
+    text: "You tend to be:",
+    options: ["Punctual", "Organized", "Relaxed about time", "Flexible with deadlines"],
+    category: "J/P"
+  },
+  {
+    id: 36,
+    text: "You prefer environments that are:",
+    options: ["Structured", "Predictable", "Dynamic", "Spontaneous"],
+    category: "J/P"
+  },
+  {
+    id: 37,
+    text: "You feel more comfortable when:",
+    options: ["Plans are set", "Everything is arranged", "Options are open", "Things are flexible"],
+    category: "J/P"
+  },
+  {
+    id: 38,
+    text: "You prefer to:",
+    options: ["Follow schedules", "Make lists", "Be spontaneous", "Stay flexible"],
+    category: "J/P"
+  },
+  {
+    id: 39,
+    text: "You tend to:",
+    options: ["Plan events", "Organize activities", "Go with the flow", "Adapt to situations"],
+    category: "J/P"
+  },
   {
     id: 40,
     text: "Your approach to deadlines is:",
