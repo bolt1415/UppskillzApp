@@ -1,4 +1,4 @@
-const GOOGLE_SHEETS_API = 'https://sheet.best/api/sheets/YOUR-SHEET-ID';
+const GOOGLE_SHEETS_API = 'https://api.sheetbest.com/sheets/44d0edf0-9be6-46b2-a7f4-b400a80c32cd';
 
 export const saveToGoogleSheets = async (userData: any) => {
   try {
