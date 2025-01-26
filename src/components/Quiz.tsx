@@ -15,6 +15,7 @@ export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userData, setUserData] = useState<User | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
@@ -26,7 +27,7 @@ export default function Quiz() {
   }, [navigate]);
 
   const handleAnswer = async (answer: string) => {
-    if (!userData) return;
+    if (!userData || isSaving || hasSubmitted) return;
 
     const updatedUser = {
       ...userData,
@@ -39,6 +40,13 @@ export default function Quiz() {
     if (currentQuestion === QUIZ_QUESTIONS.length - 1) {
       setIsSaving(true);
       try {
+        // Prevent multiple submissions
+        if (hasSubmitted) {
+          console.log('Quiz already submitted, preventing duplicate submission');
+          return;
+        }
+        setHasSubmitted(true);
+
         const personalityType = calculatePersonalityType(updatedUser.answers, QUIZ_QUESTIONS);
         const finalUser = {
           ...updatedUser,
@@ -59,6 +67,7 @@ export default function Quiz() {
         navigate("/thank-you");
       } catch (error) {
         console.error('Failed to save quiz results:', error);
+        setHasSubmitted(false); // Reset if there's an error
         toast({
           title: "Error Saving Results",
           description: "There was a problem saving your quiz results. Please try again.",
