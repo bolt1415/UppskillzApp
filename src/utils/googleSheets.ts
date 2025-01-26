@@ -6,6 +6,12 @@ export const saveToGoogleSheets = async (userData: User): Promise<any> => {
   try {
     console.log('Attempting to save data to Google Sheets:', userData);
 
+    // Only save if we have answers or a personality type
+    if (Object.keys(userData.answers).length === 0 && !userData.personalityType) {
+      console.log('Skipping save - no answers or personality type yet');
+      return null;
+    }
+
     // Format data to match Google Sheets column headers
     const formattedData = {
       "Email": userData.email,
@@ -64,7 +70,7 @@ export const fetchFromGoogleSheets = async (): Promise<User[]> => {
     const formattedData = data.map((row: any) => ({
       email: row["Email"] || "",
       fullName: row["Full name"] || "",
-      sex: row["sex"] as "male" | "female",
+      sex: row["sex"] as "male" | "female" | "other",
       age: Number(row["age"]) || 0,
       answers: row["answers"] ? JSON.parse(row["answers"]) : {},
       personalityType: row["Personality Type"] || ""
