@@ -6,9 +6,15 @@ export const saveToGoogleSheets = async (userData: User): Promise<any> => {
   try {
     console.log('Attempting to save data to Google Sheets:', userData);
 
+    // Format data to match Google Sheets column headers
     const formattedData = {
-      ...userData,
-      answers: typeof userData.answers === 'object' ? JSON.stringify(userData.answers) : userData.answers,
+      "Email": userData.email,
+      "Full name": userData.fullName,
+      "sex": userData.sex,
+      "age": userData.age,
+      "answers": JSON.stringify(userData.answers),
+      "Personality Type": userData.personalityType || "",
+      "Timestamp": new Date().toISOString()
     };
 
     console.log('Formatted data for Google Sheets:', formattedData);
@@ -49,26 +55,22 @@ export const fetchFromGoogleSheets = async (): Promise<User[]> => {
     const response = await fetch(GOOGLE_SHEETS_API);
 
     if (!response.ok) {
-      let errorText;
-      try {
-        const errorResponse = await response.json();
-        errorText = errorResponse.message || JSON.stringify(errorResponse);
-      } catch {
-        errorText = await response.text();
-      }
-      console.error('Failed to fetch from Google Sheets:', errorText);
       throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
     
-    // Format the data to ensure answers are parsed correctly
-    const formattedData = data.map((user: any) => ({
-      ...user,
-      answers: typeof user.answers === 'string' ? JSON.parse(user.answers) : user.answers
+    // Format the data to match our User type
+    const formattedData = data.map((row: any) => ({
+      email: row["Email"] || "",
+      fullName: row["Full name"] || "",
+      sex: row["sex"] as "male" | "female",
+      age: Number(row["age"]) || 0,
+      answers: row["answers"] ? JSON.parse(row["answers"]) : {},
+      personalityType: row["Personality Type"] || ""
     }));
     
-    console.log('Successfully fetched from Google Sheets:', formattedData);
+    console.log('Successfully fetched and formatted data:', formattedData);
     return formattedData;
   } catch (error) {
     console.error('Error fetching from Google Sheets:', error);

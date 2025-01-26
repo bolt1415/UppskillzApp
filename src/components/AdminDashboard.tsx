@@ -6,6 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
@@ -21,30 +22,29 @@ export default function AdminDashboard() {
   const [password, setPassword] = useState("");
   const [expandedUser, setExpandedUser] = useState<number | null>(null);
   const [users, setUsers] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleLogin = async () => {
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
+      setIsLoading(true);
       try {
         const sheetsData = await fetchFromGoogleSheets();
-        const formattedData = sheetsData.map((user: any) => ({
-          ...user,
-          answers: typeof user.answers === 'string' 
-            ? JSON.parse(user.answers) 
-            : user.answers
-        }));
-        setUsers(formattedData);
+        setUsers(sheetsData);
         toast({
           title: "Success",
-          description: "Admin access granted",
+          description: "Admin access granted and data loaded successfully",
         });
       } catch (error) {
+        console.error('Failed to fetch data:', error);
         toast({
           title: "Error",
-          description: "Failed to fetch data",
+          description: "Failed to fetch data. Please try again.",
           variant: "destructive",
         });
+      } finally {
+        setIsLoading(false);
       }
     } else {
       toast({
@@ -54,6 +54,27 @@ export default function AdminDashboard() {
       });
     }
     setPassword("");
+  };
+
+  const handleRefreshData = async () => {
+    setIsLoading(true);
+    try {
+      const sheetsData = await fetchFromGoogleSheets();
+      setUsers(sheetsData);
+      toast({
+        title: "Success",
+        description: "Data refreshed successfully",
+      });
+    } catch (error) {
+      console.error('Failed to refresh data:', error);
+      toast({
+        title: "Error",
+        description: "Failed to refresh data. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -70,6 +91,9 @@ export default function AdminDashboard() {
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Admin Dashboard</DialogTitle>
+          <DialogDescription>
+            View and manage quiz submissions
+          </DialogDescription>
         </DialogHeader>
 
         {!isAuthenticated ? (
@@ -79,11 +103,22 @@ export default function AdminDashboard() {
             handleLogin={handleLogin}
           />
         ) : (
-          <UserList
-            users={users}
-            expandedUser={expandedUser}
-            setExpandedUser={setExpandedUser}
-          />
+          <div className="space-y-4">
+            <div className="flex justify-end">
+              <Button 
+                onClick={handleRefreshData}
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : "Refresh Data"}
+              </Button>
+            </div>
+            <UserList
+              users={users}
+              expandedUser={expandedUser}
+              setExpandedUser={setExpandedUser}
+              isLoading={isLoading}
+            />
+          </div>
         )}
       </DialogContent>
     </Dialog>
