@@ -3,6 +3,7 @@ import RegistrationForm from "@/components/RegistrationForm";
 import Quiz from "@/components/Quiz";
 import ThankYou from "@/components/ThankYou";
 import AdminDashboard from "@/components/AdminDashboard";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/thank-you" element={<ThankYou />} />
       </Routes>
+      <Footer />
     </>
   );
 };
