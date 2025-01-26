@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/components/ui/use-toast";
 import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
-import { calculatePersonalityType } from "@/types/quizTypes";
+import { calculatePersonalityType } from "@/utils/personalityCalculator";
 import { saveToGoogleSheets } from "@/utils/googleSheets";
+import QuizProgress from "./quiz/QuizProgress";
+import QuizQuestion from "./quiz/QuizQuestion";
 import type { User } from "@/types/quizTypes";
 
 export default function Quiz() {
@@ -39,7 +39,6 @@ export default function Quiz() {
     if (currentQuestion === QUIZ_QUESTIONS.length - 1) {
       setIsSaving(true);
       try {
-        // Calculate personality type
         const personalityType = calculatePersonalityType(updatedUser.answers, QUIZ_QUESTIONS);
         const finalUser = {
           ...updatedUser,
@@ -48,17 +47,15 @@ export default function Quiz() {
 
         console.log('Saving final user data:', finalUser);
         
-        // Save to Google Sheets
         await saveToGoogleSheets(finalUser);
         
-        // Save to local storage for backup
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
-        localStorage.setItem("users", JSON.stringify([...users, finalUser]));
+        localStorage.setItem("users", JSON.stringify([
+          ...JSON.parse(localStorage.getItem("users") || "[]"),
+          finalUser
+        ]));
         
-        // Clear current user
         localStorage.removeItem("currentUser");
         
-        // Navigate to thank you page
         navigate("/thank-you");
       } catch (error) {
         console.error('Failed to save quiz results:', error);
@@ -79,37 +76,18 @@ export default function Quiz() {
 
   if (!userData) return null;
 
-  const question = QUIZ_QUESTIONS[currentQuestion];
-  const progress = ((currentQuestion + 1) / QUIZ_QUESTIONS.length) * 100;
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
       <Card className="w-full max-w-2xl p-8 animate-slideIn">
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-sm text-gray-500">
-              Question {currentQuestion + 1} of {QUIZ_QUESTIONS.length}
-            </span>
-            <span className="text-sm text-gray-500">{progress.toFixed(0)}%</span>
-          </div>
-          <Progress value={progress} className="h-2" />
-        </div>
-
-        <h2 className="text-2xl font-semibold mb-8">{question.text}</h2>
-
-        <div className="grid gap-4">
-          {question.options.map((option, index) => (
-            <Button
-              key={index}
-              variant="outline"
-              className="p-6 text-left justify-start hover:bg-primary hover:text-white transition-colors"
-              onClick={() => handleAnswer(option)}
-              disabled={isSaving}
-            >
-              {option}
-            </Button>
-          ))}
-        </div>
+        <QuizProgress 
+          currentQuestion={currentQuestion} 
+          totalQuestions={QUIZ_QUESTIONS.length} 
+        />
+        <QuizQuestion
+          question={QUIZ_QUESTIONS[currentQuestion]}
+          onAnswer={handleAnswer}
+          isSaving={isSaving}
+        />
       </Card>
     </div>
   );
