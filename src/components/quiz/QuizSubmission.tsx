@@ -1,17 +1,5 @@
 import { useToast } from "@/hooks/use-toast";
 import { calculatePersonalityType } from "@/utils/personalityCalculator";
-import { saveToGoogleSheets } from "@/
-
-The error occurs because we're trying to use the `useToast` hook outside of a React component in `QuizSubmission.tsx`. The `handleSubmission` function is being exported as a standalone function, but it's trying to use React hooks which can only be used inside React components.
-
-Let's fix this by restructuring the `QuizSubmission` component:
-
-<lov-code>
-Let's modify the QuizSubmission component to properly handle hooks:
-
-<lov-write file_path="src/components/quiz/QuizSubmission.tsx">
-import { useToast } from "@/hooks/use-toast";
-import { calculatePersonalityType } from "@/utils/personalityCalculator";
 import { saveToGoogleSheets } from "@/utils/googleSheets";
 import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
 import type { User } from "@/types/userTypes";
