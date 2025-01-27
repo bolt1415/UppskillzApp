@@ -37,63 +37,64 @@ export default function Quiz() {
       },
     };
 
-    // Check if we've reached the last question (index 19 for 20 questions)
-    if (currentQuestion === QUIZ_QUESTIONS.length - 1) {
-      setIsSaving(true);
-      try {
-        // Prevent multiple submissions
-        if (hasSubmitted) {
-          console.log('Quiz already submitted, preventing duplicate submission');
-          return;
-        }
-        setHasSubmitted(true);
+    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+    setUserData(updatedUser);
 
-        // Ensure we have all 20 answers before calculating personality type
-        if (Object.keys(updatedUser.answers).length !== QUIZ_QUESTIONS.length) {
-          toast({
-            title: "Error",
-            description: "Please answer all questions before submitting.",
-            variant: "destructive",
-          });
-          setHasSubmitted(false);
-          setIsSaving(false);
-          return;
-        }
+    // Move to next question if not at the end
+    if (currentQuestion < QUIZ_QUESTIONS.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      return;
+    }
 
-        const personalityType = calculatePersonalityType(updatedUser.answers, QUIZ_QUESTIONS);
-        const finalUser = {
-          ...updatedUser,
-          personalityType,
-        };
+    // If we've reached the last question, handle submission
+    setIsSaving(true);
+    try {
+      if (hasSubmitted) {
+        console.log('Quiz already submitted, preventing duplicate submission');
+        return;
+      }
+      setHasSubmitted(true);
 
-        console.log('Saving final user data:', finalUser);
-        
-        await saveToGoogleSheets(finalUser);
-        
-        localStorage.setItem("users", JSON.stringify([
-          ...JSON.parse(localStorage.getItem("users") || "[]"),
-          finalUser
-        ]));
-        
-        localStorage.removeItem("currentUser");
-        
-        navigate("/thank-you");
-      } catch (error) {
-        console.error('Failed to save quiz results:', error);
-        setHasSubmitted(false);
+      // Ensure we have all answers before calculating personality type
+      if (Object.keys(updatedUser.answers).length !== QUIZ_QUESTIONS.length) {
         toast({
-          title: "Error Saving Results",
-          description: "There was a problem saving your quiz results. Please try again.",
+          title: "Error",
+          description: "Please answer all questions before submitting.",
           variant: "destructive",
         });
-      } finally {
+        setHasSubmitted(false);
         setIsSaving(false);
+        return;
       }
-    } else {
-      // Move to the next question
-      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-      setUserData(updatedUser);
-      setCurrentQuestion(currentQuestion + 1);
+
+      const personalityType = calculatePersonalityType(updatedUser.answers, QUIZ_QUESTIONS);
+      const finalUser = {
+        ...updatedUser,
+        personalityType,
+      };
+
+      console.log('Saving final user data:', finalUser);
+      
+      await saveToGoogleSheets(finalUser);
+      
+      localStorage.setItem("users", JSON.stringify([
+        ...JSON.parse(localStorage.getItem("users") || "[]"),
+        finalUser
+      ]));
+      
+      localStorage.removeItem("currentUser");
+      
+      navigate("/thank-you");
+    } catch (error) {
+      console.error('Failed to save quiz results:', error);
+      setHasSubmitted(false);
+      toast({
+        title: "Error Saving Results",
+        description: "There was a problem saving your quiz results. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSaving(false);
     }
   };
 
