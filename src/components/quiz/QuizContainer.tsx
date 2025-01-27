@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { User } from "@/types/userTypes";
 import QuizProgress from "./QuizProgress";
 import QuizQuestion from "./QuizQuestion";
-import QuizSubmission from "./QuizSubmission";
+import { useQuizSubmission } from "./QuizSubmission";
 import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
 
 export default function QuizContainer() {
@@ -13,6 +13,7 @@ export default function QuizContainer() {
   const [userData, setUserData] = useState<User | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const { handleSubmission } = useQuizSubmission();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
@@ -42,7 +43,7 @@ export default function QuizContainer() {
       return;
     }
 
-    QuizSubmission.handleSubmission({
+    handleSubmission({
       updatedUser,
       setIsSaving,
       setHasSubmitted,
