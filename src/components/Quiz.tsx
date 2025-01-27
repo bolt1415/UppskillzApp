@@ -37,6 +37,7 @@ export default function Quiz() {
       },
     };
 
+    // Check if we've reached the last question (index 19 for 20 questions)
     if (currentQuestion === QUIZ_QUESTIONS.length - 1) {
       setIsSaving(true);
       try {
@@ -46,6 +47,18 @@ export default function Quiz() {
           return;
         }
         setHasSubmitted(true);
+
+        // Ensure we have all 20 answers before calculating personality type
+        if (Object.keys(updatedUser.answers).length !== QUIZ_QUESTIONS.length) {
+          toast({
+            title: "Error",
+            description: "Please answer all questions before submitting.",
+            variant: "destructive",
+          });
+          setHasSubmitted(false);
+          setIsSaving(false);
+          return;
+        }
 
         const personalityType = calculatePersonalityType(updatedUser.answers, QUIZ_QUESTIONS);
         const finalUser = {
@@ -67,7 +80,7 @@ export default function Quiz() {
         navigate("/thank-you");
       } catch (error) {
         console.error('Failed to save quiz results:', error);
-        setHasSubmitted(false); // Reset if there's an error
+        setHasSubmitted(false);
         toast({
           title: "Error Saving Results",
           description: "There was a problem saving your quiz results. Please try again.",
@@ -77,6 +90,7 @@ export default function Quiz() {
         setIsSaving(false);
       }
     } else {
+      // Move to the next question
       localStorage.setItem("currentUser", JSON.stringify(updatedUser));
       setUserData(updatedUser);
       setCurrentQuestion(currentQuestion + 1);
