@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { fetchFromGoogleSheets } from "@/utils/googleSheets";
 import AdminLogin from "./admin/AdminLogin";
 import UserList from "./admin/UserList";
-import type { User } from "@/types/quizTypes";
+import type { User } from "@/types/userTypes";
 
 const ADMIN_PASSWORD = "admin123"; // In a real app, this would be securely stored
 

@@ -1,7 +1,7 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import UserAnswers from "./UserAnswers";
-import type { User } from "@/types/quizTypes";
+import type { User } from "@/types/userTypes";
 
 interface UserDetailsProps {
   user: User;

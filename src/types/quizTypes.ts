@@ -1,6 +1,6 @@
 import { Question } from "./questionTypes";
 
-export { Question };
+export type { Question };
 
 export interface Profile {
   name: string;

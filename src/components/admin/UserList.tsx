@@ -1,4 +1,4 @@
-import type { User } from "@/types/quizTypes";
+import type { User } from "@/types/userTypes";
 import UserDetails from "./UserDetails";
 import { Skeleton } from "@/components/ui/skeleton";
 

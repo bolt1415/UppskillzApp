@@ -1,4 +1,4 @@
-import type { User } from "@/types/quizTypes";
+import type { User } from "@/types/userTypes";
 import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
 
 interface UserAnswersProps {

@@ -5,4 +5,7 @@ export interface User {
   age: number;
   answers: Record<number, string>;
   personalityType?: string;
+  profileDescription?: string;
+  keyStrengths?: string;
+  trainingRecommendations?: string;
 }
