@@ -1,4 +1,5 @@
-import type { Question } from "@/types/quizTypes";
+import type { Question } from "@/types/questionTypes";
+import type { User } from "@/types/userTypes";
 import { PROFILES } from "@/data/quizQuestions";
 
 export const calculatePersonalityType = (answers: Record<number, string>, questions: Question[]): string => {
