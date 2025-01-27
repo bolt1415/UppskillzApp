@@ -17,10 +17,10 @@ export default function QuizQuestion({ question, onAnswer, isSaving }: QuizQuest
             key={index}
             variant="outline"
             className="p-6 text-left justify-start hover:bg-primary hover:text-white transition-colors"
-            onClick={() => onAnswer(option)}
+            onClick={() => onAnswer(option.text)}
             disabled={isSaving}
           >
-            {option}
+            {option.text}
           </Button>
         ))}
       </div>

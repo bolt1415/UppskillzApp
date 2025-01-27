@@ -5,11 +5,25 @@ export interface User {
   age: number;
   answers: Record<number, string>;
   personalityType?: string;
+  profileDescription?: string;
+  keyStrengths?: string;
+  trainingRecommendations?: string;
 }
 
 export interface Question {
   id: number;
   text: string;
-  options: string[];
-  category: "E/I" | "N/S" | "T/F" | "J/P";
+  options: Answer[];
+}
+
+export interface Answer {
+  text: string;
+  profiles: string[];
+}
+
+export interface Profile {
+  name: string;
+  description: string;
+  keyStrengths: string;
+  trainingRecommendations: string;
 }

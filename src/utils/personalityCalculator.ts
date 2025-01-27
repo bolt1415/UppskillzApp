@@ -1,47 +1,41 @@
 import type { Question } from "@/types/quizTypes";
+import { PROFILES } from "@/data/quizQuestions";
 
 export const calculatePersonalityType = (answers: Record<number, string>, questions: Question[]): string => {
-  let E = 0, I = 0, N = 0, S = 0, T = 0, F = 0, J = 0, P = 0;
+  const profileScores: Record<string, number> = {
+    CREATIVE: 0,
+    STRATEGIC: 0,
+    EMPATHIC: 0,
+    TECHNICAL: 0,
+    VISIONARY: 0
+  };
 
-  // Questions 1-10 for E/I
-  for (let i = 0; i < 10; i++) {
-    const answer = answers[i];
-    if (answer === questions[i].options[0] || answer === questions[i].options[1]) {
-      E++;
-    } else {
-      I++;
+  // Calculate scores for each profile
+  questions.forEach((question, index) => {
+    const selectedAnswer = answers[index];
+    const option = question.options.find(opt => opt.text === selectedAnswer);
+    
+    if (option) {
+      option.profiles.forEach(profile => {
+        profileScores[profile]++;
+      });
     }
-  }
+  });
 
-  // Questions 11-20 for N/S
-  for (let i = 10; i < 20; i++) {
-    const answer = answers[i];
-    if (answer === questions[i].options[0] || answer === questions[i].options[1]) {
-      N++;
-    } else {
-      S++;
+  // Find the profile with the highest score
+  let maxScore = 0;
+  let dominantProfile = "";
+
+  Object.entries(profileScores).forEach(([profile, score]) => {
+    if (score > maxScore) {
+      maxScore = score;
+      dominantProfile = profile;
     }
-  }
+  });
 
-  // Questions 21-30 for T/F
-  for (let i = 20; i < 30; i++) {
-    const answer = answers[i];
-    if (answer === questions[i].options[0] || answer === questions[i].options[1]) {
-      T++;
-    } else {
-      F++;
-    }
-  }
+  return dominantProfile;
+};
 
-  // Questions 31-40 for J/P
-  for (let i = 30; i < 40; i++) {
-    const answer = answers[i];
-    if (answer === questions[i].options[0] || answer === questions[i].options[1]) {
-      J++;
-    } else {
-      P++;
-    }
-  }
-
-  return `${E > I ? 'E' : 'I'}${N > S ? 'N' : 'S'}${T > F ? 'T' : 'F'}${J > P ? 'J' : 'P'}`;
+export const getProfileDetails = (profileType: string) => {
+  return PROFILES[profileType];
 };
