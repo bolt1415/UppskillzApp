@@ -4,61 +4,111 @@ export const JP_QUESTIONS: Question[] = [
   {
     id: 31,
     text: "You prefer your work environment to be:",
-    options: ["Structured", "Organized", "Flexible", "Adaptable"],
+    options: [
+      { text: "Structured", profiles: ["J"] },
+      { text: "Organized", profiles: ["J"] },
+      { text: "Flexible", profiles: ["P"] },
+      { text: "Adaptable", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 32,
     text: "You prefer to:",
-    options: ["Plan ahead", "Make schedules", "Go with the flow", "Be spontaneous"],
+    options: [
+      { text: "Plan ahead", profiles: ["J"] },
+      { text: "Make schedules", profiles: ["J"] },
+      { text: "Go with the flow", profiles: ["P"] },
+      { text: "Be spontaneous", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 33,
     text: "You feel better when things are:",
-    options: ["Decided", "Settled", "Open-ended", "Flexible"],
+    options: [
+      { text: "Decided", profiles: ["J"] },
+      { text: "Settled", profiles: ["J"] },
+      { text: "Open-ended", profiles: ["P"] },
+      { text: "Flexible", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 34,
     text: "You prefer to:",
-    options: ["Complete one task", "Follow plans", "Multi-task", "Adapt as needed"],
+    options: [
+      { text: "Complete one task", profiles: ["J"] },
+      { text: "Follow plans", profiles: ["J"] },
+      { text: "Multi-task", profiles: ["P"] },
+      { text: "Adapt as needed", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 35,
     text: "You tend to be:",
-    options: ["Punctual", "Organized", "Relaxed about time", "Flexible with deadlines"],
+    options: [
+      { text: "Punctual", profiles: ["J"] },
+      { text: "Organized", profiles: ["J"] },
+      { text: "Relaxed about time", profiles: ["P"] },
+      { text: "Flexible with deadlines", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 36,
     text: "You prefer environments that are:",
-    options: ["Structured", "Predictable", "Dynamic", "Spontaneous"],
+    options: [
+      { text: "Structured", profiles: ["J"] },
+      { text: "Predictable", profiles: ["J"] },
+      { text: "Dynamic", profiles: ["P"] },
+      { text: "Spontaneous", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 37,
     text: "You feel more comfortable when:",
-    options: ["Plans are set", "Everything is arranged", "Options are open", "Things are flexible"],
+    options: [
+      { text: "Plans are set", profiles: ["J"] },
+      { text: "Everything is arranged", profiles: ["J"] },
+      { text: "Options are open", profiles: ["P"] },
+      { text: "Things are flexible", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 38,
     text: "You prefer to:",
-    options: ["Follow schedules", "Make lists", "Be spontaneous", "Stay flexible"],
+    options: [
+      { text: "Follow schedules", profiles: ["J"] },
+      { text: "Make lists", profiles: ["J"] },
+      { text: "Be spontaneous", profiles: ["P"] },
+      { text: "Stay flexible", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 39,
     text: "You tend to:",
-    options: ["Plan events", "Organize activities", "Go with the flow", "Adapt to situations"],
+    options: [
+      { text: "Plan events", profiles: ["J"] },
+      { text: "Organize activities", profiles: ["J"] },
+      { text: "Go with the flow", profiles: ["P"] },
+      { text: "Adapt to situations", profiles: ["P"] }
+    ],
     category: "J/P"
   },
   {
     id: 40,
     text: "Your approach to deadlines is:",
-    options: ["Well ahead", "Planned", "Last minute", "Flexible"],
+    options: [
+      { text: "Well ahead", profiles: ["J"] },
+      { text: "Planned", profiles: ["J"] },
+      { text: "Last minute", profiles: ["P"] },
+      { text: "Flexible", profiles: ["P"] }
+    ],
     category: "J/P"
   }
 ];
