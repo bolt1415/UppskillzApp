@@ -1,6 +1,11 @@
 export interface Question {
   id: number;
   text: string;
-  options: string[];
-  category: "E/I" | "N/S" | "T/F" | "J/P";
+  options: Answer[];
+  category?: string;
+}
+
+export interface Answer {
+  text: string;
+  profiles: string[];
 }

@@ -3,6 +3,9 @@ import type { User } from "@/types/userTypes";
 import { PROFILES } from "@/data/quizQuestions";
 
 export const calculatePersonalityType = (answers: Record<number, string>, questions: Question[]): string => {
+  console.log('Calculating personality type with answers:', answers);
+  console.log('Questions:', questions);
+
   const profileScores: Record<string, number> = {
     CREATIVE: 0,
     STRATEGIC: 0,
@@ -13,15 +16,20 @@ export const calculatePersonalityType = (answers: Record<number, string>, questi
 
   // Calculate scores for each profile
   questions.forEach((question, index) => {
-    const selectedAnswer = answers[index];
-    const option = question.options.find(opt => opt.text === selectedAnswer);
+    const selectedAnswerText = answers[index];
+    const selectedOption = question.options.find(opt => opt.text === selectedAnswerText);
     
-    if (option) {
-      option.profiles.forEach(profile => {
+    console.log(`Question ${index}: Selected answer: ${selectedAnswerText}`);
+    console.log(`Found option:`, selectedOption);
+    
+    if (selectedOption) {
+      selectedOption.profiles.forEach(profile => {
         profileScores[profile]++;
       });
     }
   });
+
+  console.log('Final profile scores:', profileScores);
 
   // Find the profile with the highest score
   let maxScore = 0;
@@ -34,6 +42,7 @@ export const calculatePersonalityType = (answers: Record<number, string>, questi
     }
   });
 
+  console.log('Dominant profile:', dominantProfile);
   return dominantProfile;
 };
 
