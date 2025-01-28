@@ -5,18 +5,7 @@ import { User } from "@/types/userTypes";
 import QuizProgress from "./QuizProgress";
 import QuizQuestion from "./QuizQuestion";
 import { useQuizSubmission } from "./QuizSubmission";
-import { EI_QUESTIONS } from "@/data/quizCategories/eiQuestions";
-import { NS_QUESTIONS } from "@/data/quizCategories/nsQuestions";
-import { TF_QUESTIONS } from "@/data/quizCategories/tfQuestions";
-import { JP_QUESTIONS } from "@/data/quizCategories/jpQuestions";
-
-// Combine all question sets
-const ALL_QUESTIONS = [
-  ...EI_QUESTIONS.slice(0, 5),  // Take first 5 from each category
-  ...NS_QUESTIONS.slice(0, 5),
-  ...TF_QUESTIONS.slice(0, 5),
-  ...JP_QUESTIONS.slice(0, 5)
-];
+import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
 
 export default function QuizContainer() {
   const navigate = useNavigate();
@@ -49,7 +38,7 @@ export default function QuizContainer() {
     localStorage.setItem("currentUser", JSON.stringify(updatedUser));
     setUserData(updatedUser);
 
-    if (currentQuestion < ALL_QUESTIONS.length - 1) {
+    if (currentQuestion < QUIZ_QUESTIONS.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       return;
     }
@@ -70,10 +59,10 @@ export default function QuizContainer() {
       <Card className="w-full max-w-2xl p-8 animate-slideIn">
         <QuizProgress 
           currentQuestion={currentQuestion} 
-          totalQuestions={ALL_QUESTIONS.length} 
+          totalQuestions={QUIZ_QUESTIONS.length} 
         />
         <QuizQuestion
-          question={ALL_QUESTIONS[currentQuestion]}
+          question={QUIZ_QUESTIONS[currentQuestion]}
           onAnswer={handleAnswer}
           isSaving={isSaving}
         />
