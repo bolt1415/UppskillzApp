@@ -28,7 +28,7 @@ export default function QuizContainer() {
     // Restore the current question from answers if it exists
     if (parsedUser.answers) {
       const answeredQuestions = Object.keys(parsedUser.answers).length;
-      if (answeredQuestions > 0) {
+      if (answeredQuestions > 0 && answeredQuestions < QUIZ_QUESTIONS.length) {
         setCurrentQuestion(answeredQuestions);
       }
     }
