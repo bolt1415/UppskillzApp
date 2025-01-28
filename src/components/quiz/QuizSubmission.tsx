@@ -1,7 +1,7 @@
 import { useToast } from "@/hooks/use-toast";
 import { calculatePersonalityType } from "@/utils/personalityCalculator";
 import { saveToGoogleSheets } from "@/utils/googleSheets";
-import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
+import { QUIZ_QUESTIONS } from "@/data/quizData";
 import type { User } from "@/types/userTypes";
 import { NavigateFunction } from "react-router-dom";
 

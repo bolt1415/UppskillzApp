@@ -5,7 +5,7 @@ import { User } from "@/types/userTypes";
 import QuizProgress from "./QuizProgress";
 import QuizQuestion from "./QuizQuestion";
 import { useQuizSubmission } from "./QuizSubmission";
-import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
+import { QUIZ_QUESTIONS } from "@/data/quizData";
 
 export default function QuizContainer() {
   const navigate = useNavigate();

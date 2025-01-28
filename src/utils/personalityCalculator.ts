@@ -1,11 +1,9 @@
-import type { Question } from "@/types/questionTypes";
-import type { User } from "@/types/userTypes";
-import { PROFILES } from "@/data/quizQuestions";
+import type { Question } from "@/types/quizTypes";
+import { PROFILES } from "@/data/quizData";
 
 export const calculatePersonalityType = (answers: Record<number, string>, questions: Question[]): string => {
   console.log('Calculating personality type with answers:', answers);
-  console.log('Questions:', questions);
-
+  
   const profileScores: Record<string, number> = {
     CREATIVE: 0,
     STRATEGIC: 0,
@@ -15,12 +13,9 @@ export const calculatePersonalityType = (answers: Record<number, string>, questi
   };
 
   // Calculate scores for each profile
-  questions.forEach((question, index) => {
-    const selectedAnswerText = answers[index];
+  Object.entries(answers).forEach(([questionIndex, selectedAnswerText]) => {
+    const question = questions[Number(questionIndex)];
     const selectedOption = question.options.find(opt => opt.text === selectedAnswerText);
-    
-    console.log(`Question ${index}: Selected answer: ${selectedAnswerText}`);
-    console.log(`Found option:`, selectedOption);
     
     if (selectedOption) {
       selectedOption.profiles.forEach(profile => {
