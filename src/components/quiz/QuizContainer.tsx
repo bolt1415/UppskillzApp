@@ -21,7 +21,17 @@ export default function QuizContainer() {
       navigate("/");
       return;
     }
-    setUserData(JSON.parse(storedUser));
+
+    const parsedUser = JSON.parse(storedUser);
+    setUserData(parsedUser);
+
+    // Restore the current question from answers if it exists
+    if (parsedUser.answers) {
+      const answeredQuestions = Object.keys(parsedUser.answers).length;
+      if (answeredQuestions > 0) {
+        setCurrentQuestion(answeredQuestions);
+      }
+    }
   }, [navigate]);
 
   const handleAnswer = (answer: string) => {
@@ -38,18 +48,22 @@ export default function QuizContainer() {
     localStorage.setItem("currentUser", JSON.stringify(updatedUser));
     setUserData(updatedUser);
 
-    if (currentQuestion < QUIZ_QUESTIONS.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-      return;
-    }
+    console.log(`Question ${currentQuestion + 1} answered:`, answer);
+    console.log('Total questions:', QUIZ_QUESTIONS.length);
+    console.log('Current answers:', updatedUser.answers);
 
-    handleSubmission({
-      updatedUser,
-      setIsSaving,
-      setHasSubmitted,
-      hasSubmitted,
-      navigate
-    });
+    if (currentQuestion < QUIZ_QUESTIONS.length - 1) {
+      setCurrentQuestion(prev => prev + 1);
+    } else {
+      console.log('Submitting quiz...');
+      handleSubmission({
+        updatedUser,
+        setIsSaving,
+        setHasSubmitted,
+        hasSubmitted,
+        navigate
+      });
+    }
   };
 
   if (!userData) return null;

@@ -23,14 +23,17 @@ export function useQuizSubmission() {
     hasSubmitted,
     navigate
   }: SubmissionProps) => {
+    if (hasSubmitted) {
+      console.log('Quiz already submitted, preventing duplicate submission');
+      return;
+    }
+
     setIsSaving(true);
+    setHasSubmitted(true);
 
     try {
-      if (hasSubmitted) {
-        console.log('Quiz already submitted, preventing duplicate submission');
-        return;
-      }
-      setHasSubmitted(true);
+      console.log('Checking answers:', updatedUser.answers);
+      console.log('Required questions:', QUIZ_QUESTIONS.length);
 
       if (Object.keys(updatedUser.answers).length !== QUIZ_QUESTIONS.length) {
         toast({
@@ -53,11 +56,11 @@ export function useQuizSubmission() {
       
       await saveToGoogleSheets(finalUser);
       
-      localStorage.setItem("users", JSON.stringify([
-        ...JSON.parse(localStorage.getItem("users") || "[]"),
-        finalUser
-      ]));
+      // Update users in localStorage
+      const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
+      localStorage.setItem("users", JSON.stringify([...existingUsers, finalUser]));
       
+      // Clear current user data
       localStorage.removeItem("currentUser");
       
       navigate("/thank-you");
