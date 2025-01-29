@@ -94,7 +94,7 @@ export default function RegistrationForm() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8 animate-slideIn">
-        <h1 className="text-2xl font-bold text-center mb-6">Personality Quiz Registration</h1>
+        <h1 className="text-2xl font-bold text-center mb-6">Welcome to Upskilling</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
@@ -114,7 +114,7 @@ export default function RegistrationForm() {
             <Label htmlFor="fullName">Full Name</Label>
             <Input
               id="fullName"
-              placeholder="John Doe"
+              placeholder="Walid Azaro"
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               required
