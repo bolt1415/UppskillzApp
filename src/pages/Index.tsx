@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="fixed w-full top-0 z-50 flex justify-center items-center py-4">
+      <header className="fixed w-full top-0 z-50 flex justify-center items-center py-4 bg-transparent">
         <img 
           src="/lovable-uploads/9b28c832-9207-49e9-b094-b3e3bca1639d.png" 
           alt="Logo" 
