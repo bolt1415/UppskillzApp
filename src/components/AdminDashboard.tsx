@@ -15,7 +15,7 @@ import AdminLogin from "./admin/AdminLogin";
 import UserList from "./admin/UserList";
 import type { User } from "@/types/userTypes";
 
-const ADMIN_PASSWORD = "admin123"; // In a real app, this would be securely stored
+const ADMIN_PASSWORD = "walid2025"; // In a real app, this would be securely stored
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
