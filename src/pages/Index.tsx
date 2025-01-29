@@ -7,15 +7,15 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col relative">
-      <header className="w-full py-4 flex justify-center items-center absolute top-0 z-10">
+    <div className="min-h-screen flex flex-col">
+      <header className="fixed w-full top-0 z-50 flex justify-center items-center py-4">
         <img 
           src="/lovable-uploads/9b28c832-9207-49e9-b094-b3e3bca1639d.png" 
           alt="Logo" 
           className="h-16 w-16"
         />
       </header>
-      <main className="flex-grow pt-20">
+      <main className="flex-grow mt-24">
         <AdminDashboard />
         <Routes>
           <Route path="/" element={<RegistrationForm />} />
