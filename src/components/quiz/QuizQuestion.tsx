@@ -23,7 +23,7 @@ export default function QuizQuestion({ question, onAnswer, isSaving }: QuizQuest
   };
 
   return (
-    <>
+    <div className="space-y-6">
       <h2 className="text-2xl font-semibold mb-8">{question.text}</h2>
       <div className="grid gap-4">
         {question.options.map((option, index) => (
@@ -38,15 +38,13 @@ export default function QuizQuestion({ question, onAnswer, isSaving }: QuizQuest
           </Button>
         ))}
       </div>
-      {selectedAnswer && (
-        <Button
-          className="mt-6 w-full"
-          onClick={handleConfirm}
-          disabled={isSaving}
-        >
-          Confirm Answer
-        </Button>
-      )}
-    </>
+      <Button
+        className="mt-6 w-full"
+        onClick={handleConfirm}
+        disabled={isSaving || !selectedAnswer}
+      >
+        Confirm Answer
+      </Button>
+    </div>
   );
 }
