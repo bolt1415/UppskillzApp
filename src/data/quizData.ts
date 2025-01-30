@@ -5,209 +5,209 @@ export const QUIZ_QUESTIONS: Question[] = [
     id: 1,
     text: "What is your main professional goal?",
     options: [
-      { text: "Create something innovative and unique", profiles: ["CREATIVE"] },
-      { text: "Solve complex problems methodically", profiles: ["STRATEGIC"] },
-      { text: "Inspire and motivate others", profiles: ["EMPATHIC", "VISIONARY"] },
-      { text: "Perfect my technical skills", profiles: ["TECHNICAL"] },
-      { text: "Lead a business or ambitious project", profiles: ["VISIONARY"] }
+      { text: "Creating something innovative and unique", profiles: ["CREATIVE"] },
+      { text: "Solving complex problems methodically", profiles: ["STRATEGIC"] },
+      { text: "Inspiring and motivating others", profiles: ["EMPATHIC", "VISIONARY"] },
+      { text: "Perfecting my technical skills", profiles: ["TECHNICAL"] },
+      { text: "Leading a business or ambitious project", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 2,
-    text: "How do you prefer to work?",
+    text: "Which quality describes you best?",
     options: [
-      { text: "Independently with creative freedom", profiles: ["CREATIVE"] },
-      { text: "Following structured processes", profiles: ["STRATEGIC"] },
-      { text: "In collaborative teams", profiles: ["EMPATHIC"] },
-      { text: "With technical tools and systems", profiles: ["TECHNICAL"] },
-      { text: "Leading and delegating", profiles: ["VISIONARY"] }
+      { text: "Creative and imaginative", profiles: ["CREATIVE"] },
+      { text: "Logical and analytical", profiles: ["STRATEGIC"] },
+      { text: "Empathetic and communicative", profiles: ["EMPATHIC"] },
+      { text: "Practical and methodical", profiles: ["TECHNICAL"] },
+      { text: "Visionary and ambitious", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 3,
-    text: "What energizes you most at work?",
+    text: "Which of these skills attracts you the most?",
     options: [
-      { text: "Brainstorming new ideas", profiles: ["CREATIVE"] },
-      { text: "Analyzing data and patterns", profiles: ["STRATEGIC"] },
-      { text: "Helping others succeed", profiles: ["EMPATHIC"] },
-      { text: "Solving technical challenges", profiles: ["TECHNICAL"] },
-      { text: "Setting ambitious goals", profiles: ["VISIONARY"] }
+      { text: "Artistic or visual creation", profiles: ["CREATIVE"] },
+      { text: "Analysis and problem-solving", profiles: ["STRATEGIC"] },
+      { text: "Communication and storytelling", profiles: ["EMPATHIC"] },
+      { text: "Mastering technical tools", profiles: ["TECHNICAL"] },
+      { text: "Project management and entrepreneurship", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 4,
-    text: "How do you approach problems?",
+    text: "You learn best when…",
     options: [
-      { text: "Think outside the box", profiles: ["CREATIVE"] },
-      { text: "Break them down systematically", profiles: ["STRATEGIC"] },
-      { text: "Discuss with others", profiles: ["EMPATHIC"] },
-      { text: "Use technical expertise", profiles: ["TECHNICAL"] },
-      { text: "See the bigger picture", profiles: ["VISIONARY"] }
+      { text: "You create or experiment", profiles: ["CREATIVE"] },
+      { text: "You analyze and reflect", profiles: ["STRATEGIC"] },
+      { text: "You exchange and share with others", profiles: ["EMPATHIC"] },
+      { text: "You practice and test things concretely", profiles: ["TECHNICAL"] },
+      { text: "You plan and organize your learning", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 5,
-    text: "What's your ideal work environment?",
+    text: "What type of activity motivates you the most?",
     options: [
-      { text: "Creative and flexible space", profiles: ["CREATIVE"] },
-      { text: "Organized and structured", profiles: ["STRATEGIC"] },
-      { text: "Collaborative and friendly", profiles: ["EMPATHIC"] },
-      { text: "Tech-equipped and efficient", profiles: ["TECHNICAL"] },
-      { text: "Dynamic and ambitious", profiles: ["VISIONARY"] }
+      { text: "Designing creative ideas", profiles: ["CREATIVE"] },
+      { text: "Planning strategies", profiles: ["STRATEGIC"] },
+      { text: "Listening and advising", profiles: ["EMPATHIC"] },
+      { text: "Solving a technical problem", profiles: ["TECHNICAL"] },
+      { text: "Starting a business", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 6,
-    text: "How do you make decisions?",
+    text: "Which work approach describes you best?",
     options: [
-      { text: "Based on intuition and creativity", profiles: ["CREATIVE"] },
-      { text: "Through careful analysis", profiles: ["STRATEGIC"] },
-      { text: "Considering others' feelings", profiles: ["EMPATHIC"] },
-      { text: "Using technical data", profiles: ["TECHNICAL"] },
-      { text: "Looking at long-term impact", profiles: ["VISIONARY"] }
+      { text: "Intuitive and free", profiles: ["CREATIVE"] },
+      { text: "Strategic and planned", profiles: ["STRATEGIC"] },
+      { text: "Collaborative and open", profiles: ["EMPATHIC"] },
+      { text: "Logical and detail-oriented", profiles: ["TECHNICAL"] },
+      { text: "Visionary and ambitious", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 7,
-    text: "What's your preferred way to learn?",
+    text: "You are most effective when…",
     options: [
-      { text: "Through creative exploration", profiles: ["CREATIVE"] },
-      { text: "Following structured courses", profiles: ["STRATEGIC"] },
-      { text: "In group discussions", profiles: ["EMPATHIC"] },
-      { text: "Hands-on technical practice", profiles: ["TECHNICAL"] },
-      { text: "Self-directed research", profiles: ["VISIONARY"] }
+      { text: "Using imagination", profiles: ["CREATIVE"] },
+      { text: "Analyzing causes", profiles: ["STRATEGIC"] },
+      { text: "Consulting others", profiles: ["EMPATHIC"] },
+      { text: "Applying practical solutions", profiles: ["TECHNICAL"] },
+      { text: "Setting ambitious goals", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 8,
-    text: "How do you handle stress?",
+    text: "Which activity do you prefer?",
     options: [
-      { text: "Express through creative outlets", profiles: ["CREATIVE"] },
-      { text: "Create action plans", profiles: ["STRATEGIC"] },
-      { text: "Talk it through with others", profiles: ["EMPATHIC"] },
-      { text: "Focus on practical solutions", profiles: ["TECHNICAL"] },
-      { text: "See it as a growth opportunity", profiles: ["VISIONARY"] }
+      { text: "Creating or designing", profiles: ["CREATIVE"] },
+      { text: "Solving complex problems", profiles: ["STRATEGIC"] },
+      { text: "Helping and inspiring others", profiles: ["EMPATHIC", "VISIONARY"] },
+      { text: "Improving processes", profiles: ["TECHNICAL"] },
+      { text: "Leading towards success", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 9,
-    text: "What's your communication style?",
+    text: "Which career inspires you the most?",
     options: [
-      { text: "Expressive and imaginative", profiles: ["CREATIVE"] },
-      { text: "Clear and structured", profiles: ["STRATEGIC"] },
-      { text: "Empathetic and supportive", profiles: ["EMPATHIC"] },
-      { text: "Precise and technical", profiles: ["TECHNICAL"] },
-      { text: "Inspiring and motivating", profiles: ["VISIONARY"] }
+      { text: "Becoming a designer or creator", profiles: ["CREATIVE"] },
+      { text: "Being a consultant or analyst", profiles: ["STRATEGIC"] },
+      { text: "Being a trainer or communicator", profiles: ["EMPATHIC"] },
+      { text: "Becoming a technical expert", profiles: ["TECHNICAL"] },
+      { text: "Being an entrepreneur or leader", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 10,
-    text: "How do you measure success?",
+    text: "When facing a challenge, you prefer…",
     options: [
-      { text: "Innovation and originality", profiles: ["CREATIVE"] },
-      { text: "Meeting strategic goals", profiles: ["STRATEGIC"] },
-      { text: "Team harmony and growth", profiles: ["EMPATHIC"] },
-      { text: "Technical excellence", profiles: ["TECHNICAL"] },
-      { text: "Vision achievement", profiles: ["VISIONARY"] }
+      { text: "Finding a creative solution", profiles: ["CREATIVE"] },
+      { text: "Analyzing causes and planning", profiles: ["STRATEGIC"] },
+      { text: "Collaborating with others", profiles: ["EMPATHIC"] },
+      { text: "Implementing a concrete solution", profiles: ["TECHNICAL"] },
+      { text: "Imagining an ambitious solution", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 11,
-    text: "What motivates you most?",
+    text: "In your free time, you like…",
     options: [
-      { text: "Creative freedom", profiles: ["CREATIVE"] },
-      { text: "Clear objectives", profiles: ["STRATEGIC"] },
-      { text: "Helping others", profiles: ["EMPATHIC"] },
-      { text: "Technical challenges", profiles: ["TECHNICAL"] },
-      { text: "Big picture impact", profiles: ["VISIONARY"] }
+      { text: "Doing artistic activities", profiles: ["CREATIVE"] },
+      { text: "Solving puzzles or riddles", profiles: ["STRATEGIC"] },
+      { text: "Spending time with friends or loved ones", profiles: ["EMPATHIC"] },
+      { text: "Working on technical projects", profiles: ["TECHNICAL"] },
+      { text: "Reading about entrepreneurship or leadership", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 12,
-    text: "How do you prefer to receive feedback?",
+    text: "How would you describe your decision-making process?",
     options: [
-      { text: "Open-ended and inspiring", profiles: ["CREATIVE"] },
-      { text: "Structured and specific", profiles: ["STRATEGIC"] },
-      { text: "Supportive and encouraging", profiles: ["EMPATHIC"] },
-      { text: "Detailed and technical", profiles: ["TECHNICAL"] },
-      { text: "Forward-looking", profiles: ["VISIONARY"] }
+      { text: "Spontaneous and intuition-based", profiles: ["CREATIVE"] },
+      { text: "Based on data and logical reasoning", profiles: ["STRATEGIC"] },
+      { text: "Focused on emotions and impact on others", profiles: ["EMPATHIC"] },
+      { text: "Based on concrete facts", profiles: ["TECHNICAL"] },
+      { text: "Visionary and long-term oriented", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 13,
-    text: "What's your approach to change?",
+    text: "What professional situation motivates you the most?",
     options: [
-      { text: "Embrace new possibilities", profiles: ["CREATIVE"] },
-      { text: "Analyze and plan carefully", profiles: ["STRATEGIC"] },
-      { text: "Consider impact on others", profiles: ["EMPATHIC"] },
-      { text: "Focus on technical aspects", profiles: ["TECHNICAL"] },
-      { text: "See opportunities", profiles: ["VISIONARY"] }
+      { text: "Creating something new", profiles: ["CREATIVE"] },
+      { text: "Planning an effective strategy", profiles: ["STRATEGIC"] },
+      { text: "Helping a team collaborate", profiles: ["EMPATHIC"] },
+      { text: "Optimizing an existing system", profiles: ["TECHNICAL"] },
+      { text: "Launching an ambitious project", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 14,
-    text: "How do you contribute to a team?",
+    text: "What type of project do you prefer?",
     options: [
-      { text: "Bringing creative ideas", profiles: ["CREATIVE"] },
-      { text: "Organizing and planning", profiles: ["STRATEGIC"] },
-      { text: "Supporting team members", profiles: ["EMPATHIC"] },
-      { text: "Technical expertise", profiles: ["TECHNICAL"] },
-      { text: "Providing direction", profiles: ["VISIONARY"] }
+      { text: "Innovative and creative", profiles: ["CREATIVE"] },
+      { text: "Logical and structured", profiles: ["STRATEGIC"] },
+      { text: "Based on collaboration", profiles: ["EMPATHIC"] },
+      { text: "Technical and precise", profiles: ["TECHNICAL"] },
+      { text: "Ambitious and visionary", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 15,
-    text: "What's your ideal role in a project?",
+    text: "You feel accomplished when…",
     options: [
-      { text: "Creative lead", profiles: ["CREATIVE"] },
-      { text: "Project manager", profiles: ["STRATEGIC"] },
-      { text: "Team facilitator", profiles: ["EMPATHIC"] },
-      { text: "Technical expert", profiles: ["TECHNICAL"] },
-      { text: "Vision setter", profiles: ["VISIONARY"] }
+      { text: "You bring a creative idea to life", profiles: ["CREATIVE"] },
+      { text: "You solve a complex problem", profiles: ["STRATEGIC"] },
+      { text: "You help someone", profiles: ["EMPATHIC"] },
+      { text: "You improve a process", profiles: ["TECHNICAL"] },
+      { text: "You achieve an ambitious goal", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 16,
-    text: "How do you handle deadlines?",
+    text: "If you had an hour of free time, you would choose to…",
     options: [
-      { text: "Work flexibly and creatively", profiles: ["CREATIVE"] },
-      { text: "Plan and track progress", profiles: ["STRATEGIC"] },
-      { text: "Coordinate with team", profiles: ["EMPATHIC"] },
-      { text: "Focus on technical tasks", profiles: ["TECHNICAL"] },
-      { text: "Maintain big picture view", profiles: ["VISIONARY"] }
+      { text: "Draw or design", profiles: ["CREATIVE"] },
+      { text: "Read a book on strategy", profiles: ["STRATEGIC"] },
+      { text: "Listen to a podcast on communication", profiles: ["EMPATHIC"] },
+      { text: "Work on a technical project", profiles: ["TECHNICAL"] },
+      { text: "Take a leadership course", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 17,
-    text: "What's your approach to innovation?",
+    text: "How do you prefer to solve problems?",
     options: [
-      { text: "Generate unique ideas", profiles: ["CREATIVE"] },
-      { text: "Systematic improvement", profiles: ["STRATEGIC"] },
-      { text: "Collaborative ideation", profiles: ["EMPATHIC"] },
-      { text: "Technical optimization", profiles: ["TECHNICAL"] },
-      { text: "Transformative thinking", profiles: ["VISIONARY"] }
+      { text: "With creativity", profiles: ["CREATIVE"] },
+      { text: "With method and logic", profiles: ["STRATEGIC"] },
+      { text: "By listening to others", profiles: ["EMPATHIC"] },
+      { text: "By applying practical solutions", profiles: ["TECHNICAL"] },
+      { text: "By finding innovative solutions", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 18,
-    text: "How do you prefer to solve conflicts?",
+    text: "Which skill do you want to develop?",
     options: [
-      { text: "Find creative solutions", profiles: ["CREATIVE"] },
-      { text: "Follow established procedures", profiles: ["STRATEGIC"] },
-      { text: "Focus on relationships", profiles: ["EMPATHIC"] },
-      { text: "Address practical issues", profiles: ["TECHNICAL"] },
-      { text: "Look for win-win outcomes", profiles: ["VISIONARY"] }
+      { text: "Creativity and design", profiles: ["CREATIVE"] },
+      { text: "Data analysis", profiles: ["STRATEGIC"] },
+      { text: "Communication", profiles: ["EMPATHIC"] },
+      { text: "Technical expertise", profiles: ["TECHNICAL"] },
+      { text: "Leadership", profiles: ["VISIONARY"] }
     ]
   },
   {
     id: 19,
-    text: "What's your preferred work pace?",
+    text: "What type of team do you prefer?",
     options: [
-      { text: "Flexible and spontaneous", profiles: ["CREATIVE"] },
-      { text: "Steady and organized", profiles: ["STRATEGIC"] },
-      { text: "Balanced with breaks", profiles: ["EMPATHIC"] },
-      { text: "Focused and efficient", profiles: ["TECHNICAL"] },
-      { text: "Dynamic and adaptable", profiles: ["VISIONARY"] }
+      { text: "Creative and flexible", profiles: ["CREATIVE"] },
+      { text: "Organized and result-oriented", profiles: ["STRATEGIC"] },
+      { text: "Collaborative and human-focused", profiles: ["EMPATHIC"] },
+      { text: "Technical and specialized", profiles: ["TECHNICAL"] },
+      { text: "Visionary and ambitious", profiles: ["VISIONARY"] }
     ]
   },
   {
@@ -218,7 +218,7 @@ export const QUIZ_QUESTIONS: Question[] = [
       { text: "Planning and analyzing risks", profiles: ["STRATEGIC"] },
       { text: "Managing relationships and communication", profiles: ["EMPATHIC"] },
       { text: "Solving technical problems", profiles: ["TECHNICAL"] },
-      { text: "Steering the overall vision", profiles: ["VISIONARY"] }
+      { text: "Driving the overall vision", profiles: ["VISIONARY"] }
     ]
   }
 ];
