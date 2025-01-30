@@ -1,5 +1,5 @@
 import type { User } from "@/types/userTypes";
-import { QUIZ_QUESTIONS } from "@/data/quizQuestions";
+import { QUIZ_QUESTIONS } from "@/data/quizData";
 
 interface UserAnswersProps {
   user: User;
@@ -8,10 +8,14 @@ interface UserAnswersProps {
 export default function UserAnswers({ user }: UserAnswersProps) {
   const getQuestionText = (questionId: string) => {
     const id = parseInt(questionId);
-    return QUIZ_QUESTIONS[id]?.text || "Question not found";
+    const question = QUIZ_QUESTIONS[id];
+    console.log('Getting question text for ID:', id, 'Found:', question?.text);
+    return question?.text || "Question not found";
   };
 
   if (!user.answers) return null;
+
+  console.log('Rendering answers for user:', user.fullName, 'Answers:', user.answers);
 
   return (
     <div className="mt-4 border-t pt-4">
