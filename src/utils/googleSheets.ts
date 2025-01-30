@@ -20,6 +20,9 @@ export const saveToGoogleSheets = async (userData: User): Promise<any> => {
       "age": userData.age,
       "answers": JSON.stringify(userData.answers),
       "Personality Type": userData.personalityType || "",
+      "Profile Description": userData.profileDescription || "",
+      "Key Strengths": userData.keyStrengths || "",
+      "Training Recommendations": userData.trainingRecommendations || "",
       "Timestamp": new Date().toISOString()
     };
 
@@ -73,7 +76,10 @@ export const fetchFromGoogleSheets = async (): Promise<User[]> => {
       sex: row["sex"] as "male" | "female" | "other",
       age: Number(row["age"]) || 0,
       answers: row["answers"] ? JSON.parse(row["answers"]) : {},
-      personalityType: row["Personality Type"] || ""
+      personalityType: row["Personality Type"] || "",
+      profileDescription: row["Profile Description"] || "",
+      keyStrengths: row["Key Strengths"] || "",
+      trainingRecommendations: row["Training Recommendations"] || ""
     }));
     
     console.log('Successfully fetched and formatted data:', formattedData);
