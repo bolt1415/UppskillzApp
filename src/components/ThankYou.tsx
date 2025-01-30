@@ -10,7 +10,10 @@ export default function ThankYou() {
   const profile = lastUser?.personalityType ? getProfileDetails(lastUser.personalityType) : null;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
+    <div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-primary to-secondary p-4">
+      <div className="w-32 h-32 mb-8 mt-8">
+        <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+      </div>
       <Card className="max-w-2xl w-full p-8 space-y-6 animate-slideIn">
         <h1 className="text-3xl font-bold text-center">Your Results</h1>
         

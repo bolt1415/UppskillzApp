@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import type { User } from "@/types/quiz";
-import { saveToGoogleSheets } from "@/utils/googleSheets"; // Import the save function
+import { saveToGoogleSheets } from "@/utils/googleSheets";
 
 export default function RegistrationForm() {
   const navigate = useNavigate();
@@ -92,10 +92,12 @@ export default function RegistrationForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
+    <div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-primary to-secondary p-4">
+      <div className="w-32 h-32 mb-8 mt-8">
+        <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+      </div>
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8 animate-slideIn">
         <h1 className="text-2xl font-bold text-center mb-6">Welcome to Upskilling</h1>
-
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="email">Email address</Label>
