@@ -93,10 +93,10 @@ export default function RegistrationForm() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-primary to-secondary p-4">
-      <div className="w-24 h-24 mb-6 mt-6 sm:w-32 sm:h-32 sm:mb-8 sm:mt-8">
+      <div className="w-32 h-32 mb-8 mt-8">
         <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
       </div>
-      <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-6 sm:p-8 animate-slideIn">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8 animate-slideIn">
         <h1 className="text-2xl font-bold text-center mb-6">Welcome to Upskilling</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">

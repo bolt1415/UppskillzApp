@@ -23,14 +23,14 @@ export default function QuizQuestion({ question, onAnswer, isSaving }: QuizQuest
   };
 
   return (
-    <div className="space-y-4 sm:space-y-6">
-      <h2 className="text-xl sm:text-2xl font-semibold mb-6 break-words">{question.text}</h2>
-      <div className="grid gap-3 sm:gap-4">
+    <div className="space-y-6">
+      <h2 className="text-2xl font-semibold mb-8">{question.text}</h2>
+      <div className="grid gap-4">
         {question.options.map((option, index) => (
           <Button
             key={index}
             variant={selectedAnswer === option.text ? "default" : "outline"}
-            className="p-4 sm:p-6 text-left justify-start hover:bg-primary hover:text-white transition-colors break-words"
+            className="p-6 text-left justify-start hover:bg-primary hover:text-white transition-colors"
             onClick={() => handleOptionSelect(option.text)}
             disabled={isSaving}
           >
@@ -39,7 +39,7 @@ export default function QuizQuestion({ question, onAnswer, isSaving }: QuizQuest
         ))}
       </div>
       <Button
-        className="mt-4 sm:mt-6 w-full"
+        className="mt-6 w-full"
         onClick={handleConfirm}
         disabled={isSaving || !selectedAnswer}
       >

@@ -70,7 +70,7 @@ export default function QuizContainer() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
-      <Card className="w-full max-w-2xl p-4 sm:p-8 overflow-hidden animate-slideIn">
+      <Card className="w-full max-w-2xl p-8 animate-slideIn">
         <QuizProgress 
           currentQuestion={currentQuestion} 
           totalQuestions={QUIZ_QUESTIONS.length} 

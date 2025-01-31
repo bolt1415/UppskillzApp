@@ -11,10 +11,10 @@ export default function ThankYou() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-primary to-secondary p-4">
-      <div className="w-24 h-24 mb-6 mt-6 sm:w-32 sm:h-32 sm:mb-8 sm:mt-8">
+      <div className="w-32 h-32 mb-8 mt-8">
         <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
       </div>
-      <Card className="max-w-2xl w-full p-6 sm:p-8 space-y-6 animate-slideIn">
+      <Card className="max-w-2xl w-full p-8 space-y-6 animate-slideIn">
         <h1 className="text-3xl font-bold text-center">Your Results</h1>
         
         {profile ? (
