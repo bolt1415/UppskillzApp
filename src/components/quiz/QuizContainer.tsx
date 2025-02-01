@@ -25,7 +25,6 @@ export default function QuizContainer() {
     const parsedUser = JSON.parse(storedUser);
     setUserData(parsedUser);
 
-    // Restore the current question from answers if it exists
     if (parsedUser.answers) {
       const answeredQuestions = Object.keys(parsedUser.answers).length;
       if (answeredQuestions > 0 && answeredQuestions < QUIZ_QUESTIONS.length) {
@@ -69,8 +68,8 @@ export default function QuizContainer() {
   if (!userData) return null;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
-      <Card className="w-full max-w-2xl p-8 animate-slideIn">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4 overflow-x-hidden">
+      <Card className="w-full max-w-2xl p-4 md:p-8 animate-slideIn">
         <QuizProgress 
           currentQuestion={currentQuestion} 
           totalQuestions={QUIZ_QUESTIONS.length} 

@@ -92,13 +92,13 @@ export default function RegistrationForm() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-primary to-secondary p-4">
-      <div className="w-32 h-32 mb-8 mt-8">
+    <div className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-primary to-secondary p-4 overflow-x-hidden">
+      <div className="w-24 h-24 md:w-32 md:h-32 mb-6 md:mb-8 mt-6 md:mt-8">
         <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
       </div>
-      <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8 animate-slideIn">
-        <h1 className="text-2xl font-bold text-center mb-6">Welcome to Upskilling</h1>
-        <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-4 md:p-8 animate-slideIn">
+        <h1 className="text-xl md:text-2xl font-bold text-center mb-6">Welcome to Upskilling</h1>
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           <div className="space-y-2">
             <Label htmlFor="email">Email address</Label>
             <Input
@@ -108,6 +108,7 @@ export default function RegistrationForm() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
+              className="w-full"
               aria-describedby="email-error"
             />
           </div>
@@ -120,6 +121,7 @@ export default function RegistrationForm() {
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               required
+              className="w-full"
               aria-describedby="name-error"
             />
           </div>
@@ -130,7 +132,7 @@ export default function RegistrationForm() {
               value={formData.sex}
               onValueChange={(value) => setFormData({ ...formData, sex: value })}
             >
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select your sex" />
               </SelectTrigger>
               <SelectContent>
@@ -151,6 +153,7 @@ export default function RegistrationForm() {
               value={formData.age}
               onChange={(e) => setFormData({ ...formData, age: e.target.value })}
               required
+              className="w-full"
               aria-describedby="age-error"
             />
           </div>
