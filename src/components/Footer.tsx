@@ -2,8 +2,8 @@ import { Heart } from "lucide-react";
 
 export default function Footer() {
   return (
-    <div className="w-full p-4 text-center text-sm text-gray-600 fixed bottom-0 z-10">
-      <div className="relative bottom-0 pb-4 md:pb-0">
+    <footer className="w-full p-4 text-center text-sm text-gray-600 sticky bottom-0 mt-auto pointer-events-none">
+      <div className="pointer-events-auto">
         developed with <Heart className="inline h-4 w-4 text-red-500 mx-1" /> by{" "}
         <a
           href="https://x.com/WajihJmil"
@@ -14,6 +14,6 @@ export default function Footer() {
           WAJIH
         </a>
       </div>
-    </div>
+    </footer>
   );
 }
