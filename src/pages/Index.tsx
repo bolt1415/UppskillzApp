@@ -7,15 +7,17 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <>
-      <AdminDashboard />
-      <Routes>
-        <Route path="/" element={<RegistrationForm />} />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/thank-you" element={<ThankYou />} />
-      </Routes>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-grow">
+        <AdminDashboard />
+        <Routes>
+          <Route path="/" element={<RegistrationForm />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/thank-you" element={<ThankYou />} />
+        </Routes>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
